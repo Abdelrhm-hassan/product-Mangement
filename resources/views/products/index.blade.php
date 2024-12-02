@@ -2,6 +2,7 @@
 
 @section('content')
 
+{{-- Show Success Message --}}
 @if (session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success') }}
@@ -13,6 +14,25 @@
         }, 4000);
     </script>
 @endif
+
+{{-- Show Error --}}
+@if($errors->any())
+
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    @foreach($errors->all() as $error)
+    <ul>
+        <li>{{ $error }}</li>
+    </ul>
+    @endforeach
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    <script>
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 4000);
+    </script>
+@endif
+
 <div class="container mt-4">
     <h1 class="mb-4">Product List</h1>
     <!-- Button trigger modal -->
@@ -33,7 +53,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" {{ old('name') }} name="name" required>
+                            <input type="text" class="form-control" required id="name" {{ old('name') }} name="name" >
 
                         </div>
                         <div class="mb-3">
@@ -42,11 +62,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
-                            <input type="number" class="form-control" {{ old('price') }} id="price" name="price" required>
+                            <input type="number" class="form-control" required {{ old('price') }} id="price" name="price" >
                         </div>
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantity</label>
-                            <input type="number" class="form-control" {{ old('quantity') }} id="quantity" name="quantity" required>
+                            <input type="number" class="form-control" required {{ old('quantity') }} id="quantity" name="quantity" >
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>

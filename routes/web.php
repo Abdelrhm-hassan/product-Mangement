@@ -9,9 +9,8 @@ Auth::routes();
 Route::middleware(['auth'])->prefix('products')->name('products.')
 ->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index');
-    Route::get('/create',[ProductController::class, 'index'])->name('create');
     Route::post('/products-store', [ProductController::class, 'store'])->name('store');
-    Route::get('/{id}', [ProductController::class, 'show'])->name('show');
+    Route::get('/show/{id}', [ProductController::class, 'show'])->name('show');
     Route::put('/update/{id}', [ProductController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [ProductController::class, 'destroy'])->name('destroy');
 
