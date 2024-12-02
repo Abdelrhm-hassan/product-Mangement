@@ -56,9 +56,9 @@ class ProductController extends Controller
     {
             $products = Product::all();
 
-if (!auth()->check()) {
-    return response()->json(['message' => 'User not logged in'], 401);
-}
+            if (!auth()->check()) {
+                return response()->json(['message' => 'User not logged in'], 401);
+            }
             if(auth()->check()) {
                 return response()->json([
                     'message' => 'Product list retrieved successfully',
