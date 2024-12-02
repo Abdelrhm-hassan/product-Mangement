@@ -15,7 +15,7 @@
 - Dynamic frontend with JavaScript.
 
 ## API Documentation
-- **GET /api/products**: Fetch all products.
+- **GET /api/get-products **: Fetch all products.
 - Authentication required via API token.
 - - **POST /api/Login**:Login End Point
   - Body {
